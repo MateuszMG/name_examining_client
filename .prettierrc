@@ -9,17 +9,21 @@
   "importOrder": [
     "<THIRD_PARTY_MODULES>",
     "^(.*)apollo/(.*)$",
-    "^(.*)config/(.*)$",
-    "^(.*)controllers/(.*)$",
-    "^(.*)middlewares/(.*)$",
-    "^(.*)modules/(.*)$",
-    "^(.*)routes/(.*)$",
-    "^(.*)types/(.*)$",
+    "^(.*)components/(.*)$",
+    "^(.*)generated/(.*)$",
+    "^(.*)context/(.*)$",
+    "^(.*)hooks/(.*)$",
+    "^(.*)hocs/(.*)$",
+    "^(.*)helpers/(.*)$",
     "^(.*)utils/(.*)$",
+    "^(.*)assets/(.*)$",
+    "^(.*)routes/(.*)$",
+    "^(.*)pages/(.*)$",
+    "^(.*)styled$",
     "^[./]"
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
   "importOrderCaseInsensitive": true,
-  "importOrderParserPlugins": ["typescript", "decorators-legacy"]
+  "plugins": ["@trivago/prettier-plugin-sort-imports"]
 }
