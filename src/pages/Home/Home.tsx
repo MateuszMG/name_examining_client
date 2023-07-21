@@ -16,10 +16,10 @@ import { useHome } from './useHome';
 export const Home = () => {
   const {
     errors,
-    genderizeData,
+    genderized,
     isValid,
     loading,
-    nationalizeData,
+    nationalized,
     onReset,
     onSubmit,
     register,
@@ -48,30 +48,30 @@ export const Home = () => {
 
       <Wrapper>
         {loading && <Loader />}
-        {!!genderizeData && !!nationalizeData && (
+        {!!genderized && !!nationalized && (
           <>
             <table>
               <tbody>
                 <Tr>
                   <td>Name:</td>
-                  <td>{genderizeData.name}</td>
+                  <td>{genderized.name}</td>
                 </Tr>
                 <Tr>
                   <td>Gender:</td>
-                  <td>{genderizeData.gender}</td>
+                  <td>{genderized.gender}</td>
                 </Tr>
                 <Tr>
                   <td>Found:</td>
-                  <td>{genderizeData.count}</td>
+                  <td>{genderized.count}</td>
                 </Tr>
                 <Tr>
                   <td>Probability:</td>
-                  <td>{genderizeData.probability * 100}%</td>
+                  <td>{genderized.probability * 100}%</td>
                 </Tr>
               </tbody>
             </table>
             <div>
-              {nationalizeData.country.map((country) => (
+              {nationalized.country.map((country) => (
                 <NationalizeSection key={country.country_id}>
                   <p>{country.country_id}</p>
                   <p>{(country.probability * 100).toFixed(2)} %</p>

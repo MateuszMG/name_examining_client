@@ -24,3 +24,9 @@ export const Link = styled(RouterLink)(
     }
   `,
 );
+
+export const AuthLinksWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  gap: 8px;
+`;

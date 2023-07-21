@@ -2,16 +2,16 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
-import { useLazyGenderizeQuery } from '../../redux/api/genderize';
-import { useLazyNationalizeQuery } from '../../redux/api/nationalize';
+import { genderize } from '../../redux/genderize/genderizeActions';
+import { nationalize } from '../../redux/nationalize/nationalizeActions';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
 
 export const useHome = () => {
-  const [genderize, { data: genderizeData, isLoading: genderizeLoaading }] =
-    useLazyGenderizeQuery();
-  const [
-    nationalize,
-    { data: nationalizeData, isLoading: nationalizeLoaading },
-  ] = useLazyNationalizeQuery();
+  const dispatch = useAppDispatch();
+  const {
+    genderized: { loading: genderizeLoaading, genderized },
+    nationalized: { loading: nationalizeLoaading, nationalized },
+  } = useAppSelector();
 
   const loading = genderizeLoaading || nationalizeLoaading;
 
@@ -30,17 +30,17 @@ export const useHome = () => {
 
   const onReset = () => reset({ name: '' });
 
-  const onSubmit = handleSubmit((formData) => {
-    genderize(formData.name);
-    nationalize(formData.name);
+  const onSubmit = handleSubmit((data) => {
+    dispatch(genderize(data.name));
+    dispatch(nationalize(data.name));
   });
 
   return {
     errors,
-    genderizeData,
+    genderized,
     isValid,
     loading,
-    nationalizeData,
+    nationalized,
     onReset,
     onSubmit,
     register,

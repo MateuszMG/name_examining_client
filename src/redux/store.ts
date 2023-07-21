@@ -1,20 +1,26 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
+import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { genderizeApi } from './api/genderize';
-import { nationalizeApi } from './api/nationalize';
+import { genderizeSlice } from './genderize/genderizeSlice';
+import { nationalizeSlice } from './nationalize/nationalizeSlice';
+import { userSlice } from './user/userSlice';
 
 export const store = configureStore({
   reducer: {
-    [genderizeApi.reducerPath]: genderizeApi.reducer,
-    [nationalizeApi.reducerPath]: nationalizeApi.reducer,
+    genderized: genderizeSlice.reducer,
+    nationalized: nationalizeSlice.reducer,
+    user: userSlice.reducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
-      .concat(genderizeApi.middleware)
-      .concat(nationalizeApi.middleware),
 });
 
-export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>;
+
 export const useAppSelector = () => useSelector((state: RootState) => state);
+export const useAppDispatch = () => useDispatch<AppDispatch>();
