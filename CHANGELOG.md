@@ -1,5 +1,12 @@
 
 
+## [0.4.0](https://github.com/MateuszMG/name_examining_client/compare/0.3.0...0.4.0) (2023-07-21)
+
+
+### Features
+
+* add auth functionalities ([a657c3a](https://github.com/MateuszMG/name_examining_client/commit/a657c3a34d920c60944c6878b986637f4e5e69fe))
+
 ## [0.3.0](https://github.com/MateuszMG/name_examining_client/compare/0.2.0...0.3.0) (2023-07-20)
 
 
