@@ -1,25 +1,22 @@
 import { Button } from '../../components/global/Button/Button';
 import { Form } from '../../components/global/Form/Form';
+import { CopyIcon } from '../../components/global/Icon/Icon.styled';
 import { Loader } from '../../components/global/Loader/Loader';
 import { TextInput } from '../../components/global/TextInput/TextInput';
 
-import {
-  Container,
-  NationalizeSection,
-  Title,
-  Tr,
-  Wrapper,
-} from './Home.styled';
+import { Container, Result, Title, Wrapper } from './Home.styled';
 
 import { useHome } from './useHome';
 
 export const Home = () => {
   const {
+    country,
     errors,
-    genderized,
+    gender,
     isValid,
     loading,
-    nationalized,
+    name,
+    nameNotFound,
     onReset,
     onSubmit,
     register,
@@ -48,38 +45,25 @@ export const Home = () => {
 
       <Wrapper>
         {loading && <Loader />}
-        {!!genderized && !!nationalized && (
-          <>
-            <table>
-              <tbody>
-                <Tr>
-                  <td>Name:</td>
-                  <td>{genderized.name}</td>
-                </Tr>
-                <Tr>
-                  <td>Gender:</td>
-                  <td>{genderized.gender}</td>
-                </Tr>
-                <Tr>
-                  <td>Found:</td>
-                  <td>{genderized.count}</td>
-                </Tr>
-                <Tr>
-                  <td>Probability:</td>
-                  <td>{genderized.probability * 100}%</td>
-                </Tr>
-              </tbody>
-            </table>
-            <div>
-              {nationalized.country.map((country) => (
-                <NationalizeSection key={country.country_id}>
-                  <p>{country.country_id}</p>
-                  <p>{(country.probability * 100).toFixed(2)} %</p>
-                </NationalizeSection>
-              ))}
-            </div>
-          </>
-        )}
+
+        <div>
+          {!loading && nameNotFound && (
+            <p>Such a name "{name}"" does not exist</p>
+          )}
+
+          {gender && country && (
+            <Result>
+              <p>{name}</p>
+              <p>{gender}</p>
+              <p>{country}</p>
+              <CopyIcon
+                onClick={() =>
+                  navigator.clipboard.writeText(`${name} ${gender} ${country}`)
+                }
+              />
+            </Result>
+          )}
+        </div>
       </Wrapper>
     </Container>
   );

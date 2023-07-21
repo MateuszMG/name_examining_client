@@ -17,17 +17,12 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  font-size: 20px;
 `;
 
-export const Tr = styled.tr`
+export const Result = styled.div`
+  align-items: center;
   display: flex;
-  justify-content: space-between;
-  margin: 6px 0;
-  gap: 24px;
-`;
-
-export const NationalizeSection = styled.div`
-  display: flex;
-  justify-content: space-between;
+  gap: 16px;
   margin: 6px 0;
 `;

@@ -14,6 +14,10 @@ export const useHome = () => {
   } = useAppSelector();
 
   const loading = genderizeLoaading || nationalizeLoaading;
+  const country = nationalized?.country[0]?.country_id;
+  const gender = genderized?.gender;
+  const name = nationalized?.name;
+  const nameNotFound = name && (!gender || !name);
 
   const {
     formState: { errors, isValid },
@@ -36,11 +40,13 @@ export const useHome = () => {
   });
 
   return {
+    country,
     errors,
-    genderized,
+    gender,
     isValid,
     loading,
-    nationalized,
+    name,
+    nameNotFound,
     onReset,
     onSubmit,
     register,

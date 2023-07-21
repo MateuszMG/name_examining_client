@@ -21,8 +21,13 @@ export const nationalize = createAsyncThunk<Nationalized, string>(
   async (name: string, { rejectWithValue }) => {
     try {
       const res = await axios.get(`${nationalizeApiUrl}/?name=${name}`);
+      const data = res.data as Nationalized;
 
-      return res.data;
+      const sortedCountries = data.country.sort(
+        (a, b) => b.probability - a.probability,
+      );
+
+      return { ...data, country: sortedCountries };
     } catch (error) {
       return reduxErrorHandler({ error, rejectWithValue });
     }
