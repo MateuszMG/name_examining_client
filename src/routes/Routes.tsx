@@ -20,7 +20,10 @@ export const Routes = () => {
               key={path}
               path={path}
               element={
-                <Profiler id={Component.name} onRender={onRenderProfiler}>
+                <Profiler
+                  id={Component.name || path}
+                  onRender={onRenderProfiler}
+                >
                   <PrivateRoute roles={roles}>
                     <Component />
                   </PrivateRoute>
