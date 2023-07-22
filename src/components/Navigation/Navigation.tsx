@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import { separateString } from '../../helpers/strings';
+import { separateStringOnSlashes } from '../../helpers/strings';
 
 import { paths } from '../../routes/paths';
 
@@ -15,7 +15,9 @@ interface NavigationLinkProps {
 }
 
 const NavigationLink = ({ path }: NavigationLinkProps) => (
-  <Link to={path}>{path === '/' ? 'Home' : separateString(path.slice(1))}</Link>
+  <Link to={path}>
+    {path === '/' ? 'Home' : separateStringOnSlashes(path.slice(1))}
+  </Link>
 );
 
 export const Navigation = () => {

@@ -1,6 +1,6 @@
-import { separateString } from './strings';
+import { separateStringOnSlashes } from './strings';
 
 export const setWebsiteTitle = (path: string) => {
   document.title =
-    path === '/' ? 'Name examining' : separateString(path.slice(1));
+    path === '/' ? 'Name examining' : separateStringOnSlashes(path.slice(1));
 };
