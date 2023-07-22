@@ -11,6 +11,7 @@ export const errorToast = (error: any) => {
     errorToShow = error;
   } else {
     errorToShow =
+      error.response?.data?.error ||
       error.response?.data?.message ||
       error.message ||
       `Error status code: ${status}` ||
