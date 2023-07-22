@@ -1,5 +1,7 @@
 import { Navigate } from 'react-router-dom';
 
+import { setWebsiteTitle } from '../helpers/websiteTitle';
+
 import { AppRoles, refreshTokenBeforeExpire } from '../utils/config/const';
 
 import { paths } from '../routes/paths';
@@ -13,10 +15,8 @@ interface PrivateRouteProps {
 }
 
 export const PrivateRoute = ({ children, roles }: PrivateRouteProps) => {
-  const {
-    user: { exp, logged },
-  } = useAppSelector();
   const dispatch = useAppDispatch();
+  const { exp, logged } = useAppSelector().user;
 
   const onlyNotLogged = roles.includes(AppRoles.NOT_LOGGED);
   const requiredAdmin = roles.includes(AppRoles.ADMIN);
@@ -34,6 +34,8 @@ export const PrivateRoute = ({ children, roles }: PrivateRouteProps) => {
     dispatch(logout());
     return <Navigate to={paths.login} />;
   }
+
+  setWebsiteTitle(window.location.pathname);
 
   return children;
 };
