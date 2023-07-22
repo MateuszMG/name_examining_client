@@ -3,6 +3,7 @@ import { AppRoles } from '../utils/config/const';
 import { Login } from '../pages/Auth/Login/Login';
 import { Register } from '../pages/Auth/Register/Register';
 import { Home } from '../pages/Home/Home';
+import { NotFound } from '../pages/NotFound/NotFound';
 import { Profile } from '../pages/Profile/Profile';
 
 import { paths } from './paths';
@@ -12,6 +13,11 @@ export const routesConfig = [
   {
     component: Home,
     path: paths.home,
+    roles: [AppRoles.EVERYBODY],
+  },
+  {
+    component: NotFound,
+    path: paths.all,
     roles: [AppRoles.EVERYBODY],
   },
 
