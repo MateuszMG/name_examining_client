@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 
+import { Button } from '../../components/global/Button/Button';
 import { Pagination } from '../../components/global/Pagination/Pagination';
 
 import { addPlural } from '../../helpers/strings';
@@ -7,6 +8,7 @@ import { addPlural } from '../../helpers/strings';
 import { DayjsFormats } from '../../utils/config/const';
 
 import {
+  ButtonWrapper,
   Countries,
   Country,
   Name,
@@ -18,10 +20,18 @@ import {
   TR,
 } from './Profile.styled';
 
+import { SavingTimesModal } from './SavingTimesModal/SavingTimesModal';
 import { useProfile } from './useProfile';
 
 export const Profile = () => {
-  const { handleRefetch, pagination, savedRequests } = useProfile();
+  const {
+    handleOpenModal,
+    handleRefetch,
+    pagination,
+    savedRequests,
+    savingTimesModal,
+    savingTimesToShow,
+  } = useProfile();
 
   return (
     <PageWrapper>
@@ -65,7 +75,7 @@ export const Profile = () => {
             <Table>
               <tbody>
                 <TR>
-                  <td> First request:</td>
+                  <td>First request:</td>
                   <td>
                     {dayjs(item.createdAt).format(DayjsFormats.savedRequest)}
                   </td>
@@ -80,11 +90,28 @@ export const Profile = () => {
                   <td>All requests:</td>
                   <td>{item.savingTimes.length}</td>
                 </TR>
+
+                {item.savingTimes.length > 1 && (
+                  <ButtonWrapper>
+                    <td>
+                      <Button onClick={() => handleOpenModal(item.savingTimes)}>
+                        Show requests
+                      </Button>
+                    </td>
+                  </ButtonWrapper>
+                )}
               </tbody>
             </Table>
           </SavedRequestWrapper>
         ))}
       </SavedRequestsContainer>
+
+      {savingTimesModal.open && (
+        <SavingTimesModal
+          {...savingTimesModal}
+          savingTimes={savingTimesToShow}
+        />
+      )}
     </PageWrapper>
   );
 };

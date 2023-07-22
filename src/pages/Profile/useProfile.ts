@@ -1,11 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { HandleRefetchData } from '../../components/global/Pagination/Pagination';
+
+import { useModal } from '../../hooks/useModal';
 
 import { getSavedRequests } from '../../redux/savedRequests/savedRequestsActions';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 
 export const useProfile = () => {
+  const savingTimesModal = useModal();
+  const [savingTimesToShow, setSavingTimesToShow] = useState<number[]>([]);
+
   const dispatch = useAppDispatch();
   const { loading, pagination, savedRequests } = useAppSelector().savedRequests;
 
@@ -17,5 +22,17 @@ export const useProfile = () => {
     dispatch(getSavedRequests(data));
   };
 
-  return { handleRefetch, pagination, savedRequests };
+  const handleOpenModal = (savingTimes: number[]) => {
+    setSavingTimesToShow(savingTimes);
+    savingTimesModal.handleOpen();
+  };
+
+  return {
+    handleOpenModal,
+    handleRefetch,
+    pagination,
+    savedRequests,
+    savingTimesModal,
+    savingTimesToShow,
+  };
 };

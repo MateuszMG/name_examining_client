@@ -8,6 +8,7 @@ export const PageWrapper = styled.div`
 `;
 
 export const TotalInfo = styled.h3`
+  margin-left: 8px;
   text-align: left;
 `;
 
@@ -16,7 +17,6 @@ export const Name = styled.h1`
 `;
 
 export const SavedRequestsContainer = styled.div`
-  align-items: center;
   display: flex;
   flex-wrap: wrap;
   font-weight: bold;
@@ -54,6 +54,12 @@ export const TR = styled.tr`
   display: flex;
   gap: 24px;
   justify-content: space-between;
+`;
+
+export const ButtonWrapper = styled.tr`
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
 `;
 
 export const Countries = styled.div`

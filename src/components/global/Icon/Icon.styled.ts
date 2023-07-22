@@ -1,6 +1,7 @@
 import { BsFillPersonFill } from 'react-icons/bs';
 import { FaPowerOff } from 'react-icons/fa';
 import {
+  MdCancel,
   MdOutlineContentCopy,
   MdOutlineNavigateBefore,
   MdOutlineNavigateNext,
@@ -47,5 +48,9 @@ export const PreviousIcon = styled(MdOutlineNavigateBefore)`
 `;
 
 export const NextIcon = styled(MdOutlineNavigateNext)`
+  ${iconStyles}
+`;
+
+export const CancelIcon = styled(MdCancel)`
   ${iconStyles}
 `;
