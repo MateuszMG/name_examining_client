@@ -27,9 +27,11 @@ export const userSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(login.fulfilled, (state, { payload }) => {
-        state = { ...state, ...payload, loading: false };
-      })
+      .addCase(login.fulfilled, (state, { payload }) => ({
+        ...state,
+        ...payload,
+        loading: false,
+      }))
       .addCase(login.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
@@ -39,20 +41,24 @@ export const userSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(register.fulfilled, (state, { payload }) => {
-        state = { ...state, ...payload, loading: false };
-      })
+      .addCase(register.fulfilled, (state, { payload }) => ({
+        ...state,
+        ...payload,
+        loading: false,
+      }))
       .addCase(register.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
       })
       //logout
-      .addCase(logout.fulfilled, (state, { payload }) => {
-        state = { ...state, ...payload };
-      })
+      .addCase(logout.fulfilled, (state, { payload }) => ({
+        ...state,
+        ...payload,
+      }))
       //refreshToken
-      .addCase(refreshToken.fulfilled, (state, { payload }) => {
-        state = { ...state, ...payload };
-      });
+      .addCase(refreshToken.fulfilled, (state, { payload }) => ({
+        ...state,
+        ...payload,
+      }));
   },
 });
