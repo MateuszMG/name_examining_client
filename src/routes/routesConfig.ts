@@ -1,12 +1,19 @@
+import { lazy } from 'react';
+
 import { AppRoles } from '../utils/config/const';
 
 import { Login } from '../pages/Auth/Login/Login';
 import { Register } from '../pages/Auth/Register/Register';
 import { Home } from '../pages/Home/Home';
 import { NotFound } from '../pages/NotFound/NotFound';
-import { Profile } from '../pages/Profile/Profile';
 
 import { paths } from './paths';
+
+const Profile = lazy(() =>
+  import('../pages/Profile/Profile').then(({ Profile }) => ({
+    default: Profile,
+  })),
+);
 
 export const routesConfig = [
   // EVERYBODY
