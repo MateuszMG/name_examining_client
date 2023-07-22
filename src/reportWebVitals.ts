@@ -13,3 +13,5 @@ const reportWebVitals = (onPerfEntry?: ReportHandler) => {
 };
 
 export default reportWebVitals;
+
+// reportWebVitals(console.log))   Learn more: https://bit.ly/CRA-vitals
