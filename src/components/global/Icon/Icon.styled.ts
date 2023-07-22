@@ -1,6 +1,10 @@
 import { BsFillPersonFill } from 'react-icons/bs';
 import { FaPowerOff } from 'react-icons/fa';
-import { MdOutlineContentCopy } from 'react-icons/md';
+import {
+  MdOutlineContentCopy,
+  MdOutlineNavigateBefore,
+  MdOutlineNavigateNext,
+} from 'react-icons/md';
 import styled, { css } from 'styled-components';
 
 interface IconProps {
@@ -35,5 +39,13 @@ export const LogoutIcon = styled(FaPowerOff)`
 `;
 
 export const PersonIcon = styled(BsFillPersonFill)`
+  ${iconStyles}
+`;
+
+export const PreviousIcon = styled(MdOutlineNavigateBefore)`
+  ${iconStyles}
+`;
+
+export const NextIcon = styled(MdOutlineNavigateNext)`
   ${iconStyles}
 `;

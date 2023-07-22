@@ -1,9 +1,11 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
 import { genderize } from '../../redux/genderize/genderizeActions';
 import { nationalize } from '../../redux/nationalize/nationalizeActions';
+import { saveRequest } from '../../redux/savedRequests/savedRequestsActions';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 
 export const useHome = () => {
@@ -12,6 +14,8 @@ export const useHome = () => {
     genderized: { loading: genderizeLoaading, genderized },
     nationalized: { loading: nationalizeLoaading, nationalized },
   } = useAppSelector();
+
+  const [isRequestSaved, setIsRequestSaved] = useState(false);
 
   const loading = genderizeLoaading || nationalizeLoaading;
   const country = nationalized?.country[0]?.country_id;
@@ -35,9 +39,24 @@ export const useHome = () => {
   const onReset = () => reset({ name: '' });
 
   const onSubmit = handleSubmit((data) => {
+    setIsRequestSaved(false);
     dispatch(genderize(data.name));
     dispatch(nationalize(data.name));
   });
+
+  useEffect(() => {
+    if (nameNotFound || isRequestSaved) return;
+    if (!genderized || !name || !nationalized) return;
+
+    setIsRequestSaved(true);
+    dispatch(
+      saveRequest({
+        genderized,
+        name,
+        nationalized,
+      }),
+    );
+  }, [name, loading]);
 
   return {
     country,

@@ -1,9 +1,9 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 import { handleAccessToken, User } from '../../helpers/accessToken';
 import { getFromTheLS } from '../../helpers/localStorage';
 
-import { login, register } from './userActions';
+import { login, logout, refreshToken, register } from './userActions';
 
 interface InitialState extends User {
   error: any;
@@ -19,11 +19,7 @@ const createInitialState = (): InitialState => ({
 export const userSlice = createSlice({
   name: 'user',
   initialState: createInitialState(),
-  reducers: {
-    setUser: (state, action: PayloadAction<User>) => {
-      return { ...state, ...action.payload };
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       //login
@@ -31,8 +27,8 @@ export const userSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(login.fulfilled, (state) => {
-        state.loading = false;
+      .addCase(login.fulfilled, (state, { payload }) => {
+        state = { ...state, ...payload, loading: false };
       })
       .addCase(login.rejected, (state, { payload }) => {
         state.loading = false;
@@ -43,14 +39,20 @@ export const userSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(register.fulfilled, (state) => {
-        state.loading = false;
+      .addCase(register.fulfilled, (state, { payload }) => {
+        state = { ...state, ...payload, loading: false };
       })
       .addCase(register.rejected, (state, { payload }) => {
         state.loading = false;
         state.error = payload;
+      })
+      //logout
+      .addCase(logout.fulfilled, (state, { payload }) => {
+        state = { ...state, ...payload };
+      })
+      //refreshToken
+      .addCase(refreshToken.fulfilled, (state, { payload }) => {
+        state = { ...state, ...payload };
       });
   },
 });
-
-export const { setUser } = userSlice.actions;

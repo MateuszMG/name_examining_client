@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { genderizeSlice } from './genderize/genderizeSlice';
 import { nationalizeSlice } from './nationalize/nationalizeSlice';
+import { savedRequestsSlice } from './savedRequests/savedRequestsSlice';
 import { userSlice } from './user/userSlice';
 
 export const store = configureStore({
   reducer: {
     genderized: genderizeSlice.reducer,
     nationalized: nationalizeSlice.reducer,
+    savedRequests: savedRequestsSlice.reducer,
     user: userSlice.reducer,
   },
 });
