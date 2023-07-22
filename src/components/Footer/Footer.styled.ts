@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.footer(
+export const PageWrapper = styled.footer(
   ({ theme: { colors } }) => css`
     align-items: center;
     background-color: ${colors.backgroundPrimary};

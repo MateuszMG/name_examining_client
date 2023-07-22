@@ -6,7 +6,7 @@ import { TextInput } from '../../../components/global/TextInput/TextInput';
 
 import { paths } from '../../../routes/paths';
 
-import { Container, Title } from '../Auth.styled';
+import { PageWrapper, Title } from '../Auth.styled';
 
 import { useRegister } from './useRegister';
 
@@ -17,7 +17,7 @@ export const Register = () => {
   if (logged) return <Navigate to={paths.profile} />;
 
   return (
-    <Container>
+    <PageWrapper>
       <Form onReset={() => reset()} onSubmit={onSubmit}>
         <Title>Register</Title>
         <TextInput
@@ -51,6 +51,6 @@ export const Register = () => {
           </Button>
         </Form.ButtonsWrapper>
       </Form>
-    </Container>
+    </PageWrapper>
   );
 };

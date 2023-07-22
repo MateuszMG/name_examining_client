@@ -10,7 +10,7 @@ import {
   Countries,
   Country,
   Name,
-  PageContainer,
+  PageWrapper,
   SavedRequestsContainer,
   SavedRequestWrapper,
   Table,
@@ -24,7 +24,7 @@ export const Profile = () => {
   const { handleRefetch, pagination, savedRequests } = useProfile();
 
   return (
-    <PageContainer>
+    <PageWrapper>
       <Pagination {...pagination} handleRefetch={handleRefetch} />
 
       <TotalInfo>
@@ -85,6 +85,6 @@ export const Profile = () => {
           </SavedRequestWrapper>
         ))}
       </SavedRequestsContainer>
-    </PageContainer>
+    </PageWrapper>
   );
 };

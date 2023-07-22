@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+export const LayoutWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 40px minmax(calc(100vh - 80px), 1fr) 40px;

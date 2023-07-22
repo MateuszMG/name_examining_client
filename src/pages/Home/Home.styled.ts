@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const Container = styled.div`
+export const PageWrapper = styled.div`
   align-items: center;
   display: flex;
   gap: 64px;

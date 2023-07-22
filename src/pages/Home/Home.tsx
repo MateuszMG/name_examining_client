@@ -4,7 +4,7 @@ import { CopyIcon } from '../../components/global/Icon/Icon.styled';
 import { Loader } from '../../components/global/Loader/Loader';
 import { TextInput } from '../../components/global/TextInput/TextInput';
 
-import { Container, Result, Title, Wrapper } from './Home.styled';
+import { PageWrapper, Result, Title, Wrapper } from './Home.styled';
 
 import { useHome } from './useHome';
 
@@ -23,7 +23,7 @@ export const Home = () => {
   } = useHome();
 
   return (
-    <Container>
+    <PageWrapper>
       <Form onReset={onReset} onSubmit={onSubmit}>
         <Title>Check your name</Title>
 
@@ -65,6 +65,6 @@ export const Home = () => {
           )}
         </div>
       </Wrapper>
-    </Container>
+    </PageWrapper>
   );
 };
