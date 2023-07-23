@@ -13,6 +13,7 @@ export const useHome = () => {
   const {
     genderized: { loading: genderizeLoaading, genderized },
     nationalized: { loading: nationalizeLoaading, nationalized },
+    user: { logged },
   } = useAppSelector();
 
   const [isRequestSaved, setIsRequestSaved] = useState(false);
@@ -39,12 +40,13 @@ export const useHome = () => {
   const onReset = () => reset({ name: '' });
 
   const onSubmit = handleSubmit((data) => {
-    setIsRequestSaved(false);
+    logged && setIsRequestSaved(false);
     dispatch(genderize(data.name));
     dispatch(nationalize(data.name));
   });
 
   useEffect(() => {
+    if (!logged) return;
     if (nameNotFound || isRequestSaved) return;
     if (!genderized || !name || !nationalized) return;
 

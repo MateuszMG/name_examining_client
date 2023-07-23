@@ -21,7 +21,7 @@ const NavigationLink = ({ path }: NavigationLinkProps) => (
 );
 
 export const Navigation = () => {
-  const { user } = useAppSelector();
+  const { logged } = useAppSelector().user;
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ export const Navigation = () => {
         <NavigationLink path={paths.home} />
 
         <AuthLinksWrapper>
-          {user.logged ? (
+          {logged ? (
             <>
               <PersonIcon
                 fontSize='20px'

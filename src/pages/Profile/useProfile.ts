@@ -8,15 +8,11 @@ import { getSavedRequests } from '../../redux/savedRequests/savedRequestsActions
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 
 export const useProfile = () => {
-  const savingTimesModal = useModal();
-  const [savingTimesToShow, setSavingTimesToShow] = useState<number[]>([]);
-
   const dispatch = useAppDispatch();
   const { loading, pagination, savedRequests } = useAppSelector().savedRequests;
 
-  useEffect(() => {
-    !savedRequests.length && !loading && dispatch(getSavedRequests({}));
-  }, []);
+  const savingTimesModal = useModal();
+  const [savingTimesToShow, setSavingTimesToShow] = useState<number[]>([]);
 
   const handleRefetch = (data: HandleRefetchData) => {
     dispatch(getSavedRequests(data));
@@ -26,6 +22,10 @@ export const useProfile = () => {
     setSavingTimesToShow(savingTimes);
     savingTimesModal.handleOpen();
   };
+
+  useEffect(() => {
+    !savedRequests.length && !loading && dispatch(getSavedRequests({}));
+  }, []);
 
   return {
     handleOpenModal,
