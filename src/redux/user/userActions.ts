@@ -43,16 +43,16 @@ export const register = createAsyncThunk<User, RegisterSchema>(
   },
 );
 
-export const logout = createAsyncThunk('user/logout', async () => {
+export const logout = createAsyncThunk<User, void>('user/logout', async () => {
+  const user = handleAccessToken('');
+  localStorage.clear();
+  toast.success('See you later');
+
   try {
-    localStorage.clear();
-    const user = handleAccessToken('');
-
-    toast.success('See you later');
     await axios().get(`/logout`);
-
-    return user;
   } catch (error) {}
+
+  return user;
 });
 
 export const refreshToken = createAsyncThunk(
