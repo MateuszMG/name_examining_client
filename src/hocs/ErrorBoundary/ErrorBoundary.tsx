@@ -8,12 +8,16 @@ interface ErrorBoundaryProps {
 }
 
 export const ErrorBoundary = ({ children }: ErrorBoundaryProps) => {
+  const handleReload = () => {
+    window.location.reload();
+  };
+
   return (
     <ReactErrorBoundary
       fallback={
         <div style={pageWrapperStyles}>
           <h2>Something went wrong ...</h2>
-          <button style={buttonStyles} onClick={() => window.location.reload()}>
+          <button style={buttonStyles} onClick={handleReload}>
             Reload
           </button>
         </div>

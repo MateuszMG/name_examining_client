@@ -4,10 +4,10 @@ import { toast } from 'react-toastify';
 import { handleAccessToken, User } from '../../helpers/accessToken';
 import { reduxErrorHandler } from '../../helpers/errors';
 
+import { axios } from '../../utils/config/axios';
+
 import { LoginSchema } from '../../pages/Auth/Login/useLogin';
 import { RegisterSchema } from '../../pages/Auth/Register/useRegister';
-
-import { axios } from '../../api/baseAxios';
 
 export const login = createAsyncThunk<User, LoginSchema>(
   'user/login',

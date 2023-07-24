@@ -44,6 +44,8 @@ export const Pagination = ({
     handleRefetch({ limit: newLimit, page: 0 });
   };
 
+  if (!total) return null;
+
   return (
     <Wrapper>
       <ReactPaginate

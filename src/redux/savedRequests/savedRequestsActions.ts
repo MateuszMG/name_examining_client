@@ -2,9 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { reduxErrorHandler } from '../../helpers/errors';
 
+import { axios } from '../../utils/config/axios';
 import { Pagination } from '../../utils/config/const';
 
-import { axios } from '../../api/baseAxios';
 import { Genderized } from '../genderize/genderizeActions';
 import { Nationalized } from '../nationalize/nationalizeActions';
 
