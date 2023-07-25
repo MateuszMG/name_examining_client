@@ -1,7 +1,6 @@
 import { Button } from '../../components/global/Button/Button';
 import { Form } from '../../components/global/Form/Form';
 import { CopyIcon } from '../../components/global/Icon/Icon.styled';
-import { Loader } from '../../components/global/Loader/Loader';
 import { TextInput } from '../../components/global/TextInput/TextInput';
 
 import { PageWrapper, Result, Title, Wrapper } from './Home.styled';
@@ -44,11 +43,9 @@ export const Home = () => {
       </Form>
 
       <Wrapper>
-        {loading && <Loader />}
-
         <div>
           {!loading && nameNotFound && (
-            <p>Such a name "{name}"" does not exist</p>
+            <p>Such a name "{name}" does not exist</p>
           )}
 
           {gender && country && (

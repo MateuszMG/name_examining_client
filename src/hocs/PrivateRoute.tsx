@@ -16,7 +16,7 @@ interface PrivateRouteProps {
 
 export const PrivateRoute = ({ children, roles }: PrivateRouteProps) => {
   const dispatch = useAppDispatch();
-  const { exp, logged } = useAppSelector().user;
+  const { exp, loading, logged } = useAppSelector().user;
 
   const onlyNotLogged = roles.includes(AppRoles.NOT_LOGGED);
   const requiredAdmin = roles.includes(AppRoles.ADMIN);
@@ -30,7 +30,7 @@ export const PrivateRoute = ({ children, roles }: PrivateRouteProps) => {
   if (!logged && requiredAdmin) return <Navigate to={paths.login} />;
 
   if (logged && !isExpired && canRefresh) dispatch(refreshToken());
-  if (logged && isExpired) {
+  if (logged && isExpired && !loading) {
     dispatch(logout());
     return <Navigate to={paths.login} />;
   }

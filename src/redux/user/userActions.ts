@@ -46,7 +46,7 @@ export const register = createAsyncThunk<User, RegisterSchema>(
 export const logout = createAsyncThunk<User, void>('user/logout', async () => {
   const user = handleAccessToken('');
   localStorage.clear();
-  toast.success('See you later');
+  toast.success('See you later', { toastId: 'See you later' });
 
   try {
     await axios().get(`/logout`);
