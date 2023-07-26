@@ -8,14 +8,18 @@ interface InitialState {
   loading: boolean;
 }
 
+const initialState: InitialState = {
+  error: undefined,
+  genderized: undefined,
+  loading: false,
+};
+
 export const genderizeSlice = createSlice({
   name: 'genderize',
-  initialState: {
-    error: undefined,
-    genderize: undefined,
-    loading: false,
-  } as InitialState,
-  reducers: {},
+  initialState,
+  reducers: {
+    clearGenderizeState: () => initialState,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(genderize.pending, (state, action) => {
@@ -32,3 +36,5 @@ export const genderizeSlice = createSlice({
       });
   },
 });
+
+export const { clearGenderizeState } = genderizeSlice.actions;

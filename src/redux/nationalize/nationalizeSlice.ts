@@ -8,14 +8,18 @@ interface InitialState {
   nationalized?: Nationalized;
 }
 
+const initialState: InitialState = {
+  error: undefined,
+  loading: false,
+  nationalized: undefined,
+};
+
 export const nationalizeSlice = createSlice({
   name: 'nationalize',
-  initialState: {
-    error: undefined,
-    loading: false,
-    nationalized: undefined,
-  } as InitialState,
-  reducers: {},
+  initialState,
+  reducers: {
+    clearNationalizeState: () => initialState,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(nationalize.pending, (state, action) => {
@@ -32,3 +36,5 @@ export const nationalizeSlice = createSlice({
       });
   },
 });
+
+export const { clearNationalizeState } = nationalizeSlice.actions;

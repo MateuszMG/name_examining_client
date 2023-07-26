@@ -4,7 +4,9 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
 import { genderize } from '../../redux/genderize/genderizeActions';
+import { clearGenderizeState } from '../../redux/genderize/genderizeSlice';
 import { nationalize } from '../../redux/nationalize/nationalizeActions';
+import { clearNationalizeState } from '../../redux/nationalize/nationalizeSlice';
 import { saveRequest } from '../../redux/savedRequests/savedRequestsActions';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 
@@ -48,14 +50,15 @@ export const useHome = () => {
     if (!genderized || !name || !nationalized) return;
 
     setIsRequestSaved(true);
-    dispatch(
-      saveRequest({
-        genderized,
-        name,
-        nationalized,
-      }),
-    );
+    dispatch(saveRequest({ genderized, name, nationalized }));
   }, [name, loading]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearGenderizeState());
+      dispatch(clearNationalizeState());
+    };
+  }, []);
 
   return {
     country,
