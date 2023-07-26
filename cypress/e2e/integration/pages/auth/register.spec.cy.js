@@ -31,8 +31,8 @@ const confirmPasswordMessages = {
 
 const texts = {
   title: 'Register',
-  resetBtn: 'Reset',
-  submitBtn: 'Register',
+  resetButton: 'Reset',
+  submitButton: 'Register',
   usernamePlaceholder: 'Your name',
   passwordPlaceholder: 'StrongPassword1!',
   confirmPasswordPlaceholder: 'StrongPassword1!',
@@ -60,12 +60,12 @@ describe('<Register />', () => {
       cy.get(testId('text_title')).should('have.text', texts.title);
     });
 
-    it(`reset button should have text: ${texts.resetBtn}`, () => {
-      cy.get(testId('button__reset')).should('have.text', texts.resetBtn);
+    it(`reset button should have text: ${texts.resetButton}`, () => {
+      cy.get(testId('button__reset')).should('have.text', texts.resetButton);
     });
 
-    it(`submit button should have text: ${texts.submitBtn}`, () => {
-      cy.get(testId('button__submit')).should('have.text', texts.submitBtn);
+    it(`submit button should have text: ${texts.submitButton}`, () => {
+      cy.get(testId('button__submit')).should('have.text', texts.submitButton);
     });
 
     it(`username input should have placeholder: ${texts.usernamePlaceholder}`, () => {
