@@ -47,7 +47,7 @@ const testUserData = {
   confirmPassword: 'StrongPassword1!',
 };
 
-describe('register', () => {
+describe('<Register />', () => {
   beforeEach(() => {
     cy.visit(`${domainUrl}/register`);
     cy.get(testId('input__username')).clear();
