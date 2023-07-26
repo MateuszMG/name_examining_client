@@ -58,7 +58,11 @@ export const userSlice = createSlice({
       .addCase(logout.fulfilled, (state, { payload }) => ({
         ...state,
         ...payload,
+        loading: false,
       }))
+      .addCase(register.rejected, (state) => {
+        state.loading = false;
+      })
       //refreshToken
       .addCase(refreshToken.fulfilled, (state, { payload }) => ({
         ...state,
