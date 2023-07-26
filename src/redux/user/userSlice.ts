@@ -60,7 +60,7 @@ export const userSlice = createSlice({
         ...payload,
         loading: false,
       }))
-      .addCase(register.rejected, (state) => {
+      .addCase(logout.rejected, (state) => {
         state.loading = false;
       })
       //refreshToken

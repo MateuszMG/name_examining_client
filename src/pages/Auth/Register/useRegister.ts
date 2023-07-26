@@ -19,11 +19,6 @@ export const useRegister = () => {
   } = useForm<RegisterSchema>({
     mode: 'onChange',
     resolver: yupResolver(registerValidation),
-    defaultValues: {
-      confirmPassword: 'StrongPassword1!',
-      password: 'StrongPassword1!',
-      username: 'FirstUser',
-    },
   });
 
   const onSubmit = handleSubmit((data) => {

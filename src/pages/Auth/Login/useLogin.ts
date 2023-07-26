@@ -19,10 +19,6 @@ export const useLogin = () => {
   } = useForm<LoginSchema>({
     mode: 'onChange',
     resolver: yupResolver(loginValidation),
-    defaultValues: {
-      username: 'FirstUser',
-      password: 'StrongPassword1!',
-    },
   });
 
   const onSubmit = handleSubmit((data) => {

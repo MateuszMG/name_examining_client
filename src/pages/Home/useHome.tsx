@@ -32,9 +32,6 @@ export const useHome = () => {
   } = useForm<NameSchema>({
     mode: 'onChange',
     resolver: yupResolver(nameValidation),
-    defaultValues: {
-      name: 'eryk',
-    },
   });
 
   const onReset = () => reset({ name: '' });
