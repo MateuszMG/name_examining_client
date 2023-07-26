@@ -38,8 +38,14 @@ export const useHome = () => {
 
   const onReset = () => reset({ name: '' });
 
+  const clearStates = () => {
+    dispatch(clearGenderizeState());
+    dispatch(clearNationalizeState());
+  };
+
   const onSubmit = handleSubmit((data) => {
     logged && setIsRequestSaved(false);
+    clearStates();
     dispatch(genderize(data.name));
     dispatch(nationalize(data.name));
   });
@@ -51,12 +57,13 @@ export const useHome = () => {
 
     setIsRequestSaved(true);
     dispatch(saveRequest({ genderized, name, nationalized }));
-
-    return () => {
-      dispatch(clearGenderizeState());
-      dispatch(clearNationalizeState());
-    };
   }, [name, loading]);
+
+  useEffect(() => {
+    return () => {
+      clearStates();
+    };
+  }, []);
 
   return {
     country,
