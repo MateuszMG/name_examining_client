@@ -51,14 +51,12 @@ export const useHome = () => {
 
     setIsRequestSaved(true);
     dispatch(saveRequest({ genderized, name, nationalized }));
-  }, [name, loading]);
 
-  useEffect(() => {
     return () => {
       dispatch(clearGenderizeState());
       dispatch(clearNationalizeState());
     };
-  }, []);
+  }, [name, loading]);
 
   return {
     country,
