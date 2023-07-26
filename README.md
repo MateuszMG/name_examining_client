@@ -13,15 +13,15 @@
 
 ## Available scripts
 
-    "dev": "BROWSER=none PORT=3013 react-scripts start",
-    "start": " react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "cypress": "cypress open",
-    "format": "prettier --write 'src/**/*.{ts,tsx,css,json}' --config ./.prettierrc",
-    "release": "release-it",
+- "dev": "BROWSER=none PORT=3013 react-scripts start",
+- "start": " react-scripts start",
+- "build": "react-scripts build",
+- "test": "react-scripts test",
+- "eject": "react-scripts eject",
+- "cypress": "cypress open",
+- "format": "prettier --write 'src/\*_/_.{ts,tsx,css,json}' --config ./.prettierrc",
+- "release": "release-it",
 
 ### Other
 
-Node requirements: "^14.18.0 || ^16.14.0 || >=18.0.0".
+- Node requirements: "^14.18.0 || ^16.14.0 || >=18.0.0".
