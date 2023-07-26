@@ -1,5 +1,12 @@
 
 
+## [0.5.2](https://github.com/MateuszMG/name_examining_client/compare/0.5.1...0.5.2) (2023-07-26)
+
+
+### Bug Fixes
+
+* repair README text format ([1ed918a](https://github.com/MateuszMG/name_examining_client/commit/1ed918ab2930c06791c24f7394b48c2aa347820d))
+
 ## [0.5.1](https://github.com/MateuszMG/name_examining_client/compare/0.5.0...0.5.1) (2023-07-26)
 
 
