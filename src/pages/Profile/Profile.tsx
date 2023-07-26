@@ -34,7 +34,7 @@ export const Profile = () => {
   } = useProfile();
 
   return (
-    <PageWrapper>
+    <PageWrapper data-testid={'page__profile'}>
       <Pagination {...pagination} handleRefetch={handleRefetch} />
 
       <TotalInfo>
@@ -44,7 +44,7 @@ export const Profile = () => {
       <SavedRequestsContainer>
         {savedRequests.map((item) => (
           <SavedRequestWrapper key={item.name}>
-            <Name>{item.name}</Name>
+            <Name data-testid={`text__name--${item.name}`}>{item.name}</Name>
 
             <Table>
               <tbody>

@@ -22,45 +22,55 @@ export const Home = () => {
   } = useHome();
 
   return (
-    <PageWrapper>
+    <PageWrapper data-testid={'page__home'}>
       <Form onReset={onReset} onSubmit={onSubmit}>
-        <Title>Check your name</Title>
+        <Title data-testid={'page__title'}>Check your name</Title>
 
         <TextInput
           {...register('name')}
+          data-testid={'input__name'}
           error={errors?.name?.message}
           placeholder={'Charles'}
         />
 
         <Form.ButtonsWrapper>
-          <Button isLoading={loading} type='reset'>
+          <Button
+            data-testid={'button__reset'}
+            isLoading={loading}
+            type='reset'
+          >
             Reset
           </Button>
-          <Button disabled={!isValid} isLoading={loading} type='submit'>
+          <Button
+            data-testid={'button__submit'}
+            disabled={!isValid}
+            isLoading={loading}
+            type='submit'
+          >
             Check name
           </Button>
         </Form.ButtonsWrapper>
       </Form>
 
       <Wrapper>
-        <div>
-          {!loading && nameNotFound && (
-            <p>Such a name "{name}" does not exist</p>
-          )}
+        {!loading && nameNotFound && (
+          <p data-testid={'text__not-found'}>
+            Such a name "{name}" does not exist
+          </p>
+        )}
 
-          {gender && country && (
-            <Result>
-              <p>{name}</p>
-              <p>{gender}</p>
-              <p>{country}</p>
-              <CopyIcon
-                onClick={() =>
-                  navigator.clipboard.writeText(`${name} ${gender} ${country}`)
-                }
-              />
-            </Result>
-          )}
-        </div>
+        {gender && country && (
+          <Result>
+            <p data-testid={'text__name'}>{name}</p>
+            <p data-testid={'text__gender'}>{gender}</p>
+            <p data-testid={'text__country'}>{country}</p>
+            <CopyIcon
+              onClick={() =>
+                navigator.clipboard.writeText(`${name} ${gender} ${country}`)
+              }
+            />
+          </Result>
+        )}
       </Wrapper>
     </PageWrapper>
   );
