@@ -17,18 +17,19 @@ export const Register = () => {
   if (logged) return <Navigate to={paths.profile} />;
 
   return (
-    <PageWrapper>
+    <PageWrapper data-testid={'page_register'}>
       <Form onReset={() => reset()} onSubmit={onSubmit}>
-        <Title>Register</Title>
+        <Title data-testid={'text_title'}>Register</Title>
         <TextInput
           {...register('username')}
-          data-testid={'input_username'}
+          data-testid={'input__username'}
           error={errors?.username?.message}
           label={'Username'}
           placeholder={'Your name'}
         />
         <TextInput
           {...register('password')}
+          data-testid={'input__password'}
           error={errors?.password?.message}
           label={'Password'}
           placeholder={'StrongPassword1!'}
@@ -36,6 +37,7 @@ export const Register = () => {
         />
         <TextInput
           {...register('confirmPassword')}
+          data-testid={'input__confirm-password'}
           error={errors?.confirmPassword?.message}
           label={'Repeat password'}
           placeholder={'StrongPassword1!'}
@@ -43,10 +45,19 @@ export const Register = () => {
         />
 
         <Form.ButtonsWrapper>
-          <Button isLoading={loading} type={'reset'}>
+          <Button
+            data-testid={'button__reset'}
+            isLoading={loading}
+            type={'reset'}
+          >
             Reset
           </Button>
-          <Button disabled={!isValid} isLoading={loading} type={'submit'}>
+          <Button
+            data-testid={'button__submit'}
+            disabled={!isValid}
+            isLoading={loading}
+            type={'submit'}
+          >
             Register
           </Button>
         </Form.ButtonsWrapper>

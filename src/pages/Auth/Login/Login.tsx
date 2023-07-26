@@ -17,17 +17,19 @@ export const Login = () => {
   if (logged) return <Navigate to={paths.profile} />;
 
   return (
-    <PageWrapper>
+    <PageWrapper data-testid={'page_login'}>
       <Form onReset={() => reset()} onSubmit={onSubmit}>
-        <Title>Login</Title>
+        <Title data-testid={'text_title'}>Login</Title>
         <TextInput
           {...register('username')}
+          data-testid={'input__username'}
           error={errors?.username?.message}
-          label={'Email'}
+          label={'Username'}
           placeholder={'Your name'}
         />
         <TextInput
           {...register('password')}
+          data-testid={'input__password'}
           error={errors?.password?.message}
           label={'Password'}
           placeholder={'StrongPassword1!'}
@@ -35,10 +37,19 @@ export const Login = () => {
         />
 
         <Form.ButtonsWrapper>
-          <Button isLoading={loading} type={'reset'}>
+          <Button
+            data-testid={'button__reset'}
+            isLoading={loading}
+            type={'reset'}
+          >
             Reset
           </Button>
-          <Button disabled={!isValid} isLoading={loading} type={'submit'}>
+          <Button
+            data-testid={'button__submit'}
+            disabled={!isValid}
+            isLoading={loading}
+            type={'submit'}
+          >
             Login
           </Button>
         </Form.ButtonsWrapper>

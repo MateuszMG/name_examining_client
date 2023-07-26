@@ -1,6 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 
-import { separateStringOnSlashes } from '../../helpers/strings';
+import {
+  convertToSnakeCase,
+  separateStringOnSlashes,
+} from '../../helpers/strings';
 
 import { paths } from '../../routes/paths';
 
@@ -15,7 +18,10 @@ interface NavigationLinkProps {
 }
 
 const NavigationLink = ({ path }: NavigationLinkProps) => (
-  <Link to={path}>
+  <Link
+    data-testid={`navigation-link__${convertToSnakeCase(path.slice(1))}`}
+    to={path}
+  >
     {path === '/' ? 'Home' : separateStringOnSlashes(path.slice(1))}
   </Link>
 );
@@ -34,10 +40,15 @@ export const Navigation = () => {
           {logged ? (
             <>
               <PersonIcon
+                data-testid={'button__profile'}
                 fontSize='20px'
                 onClick={() => navigate(paths.profile)}
               />
-              <LogoutIcon fontSize='20px' onClick={() => dispatch(logout())} />
+              <LogoutIcon
+                data-testid={'button__logout'}
+                fontSize='20px'
+                onClick={() => dispatch(logout())}
+              />
             </>
           ) : (
             <>
