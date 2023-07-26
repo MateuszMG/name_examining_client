@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 
 import { Button } from '../../components/global/Button/Button';
+import { Loader } from '../../components/global/Loader/Loader';
 import { Pagination } from '../../components/global/Pagination/Pagination';
 
 import { addPlural } from '../../helpers/strings';
@@ -11,6 +12,7 @@ import {
   ButtonWrapper,
   Countries,
   Country,
+  LoaderWrapper,
   Name,
   PageWrapper,
   SavedRequestsContainer,
@@ -27,6 +29,7 @@ export const Profile = () => {
   const {
     handleOpenModal,
     handleRefetch,
+    loading,
     pagination,
     savedRequests,
     savingTimesModal,
@@ -37,9 +40,15 @@ export const Profile = () => {
     <PageWrapper data-testid={'page__profile'}>
       <Pagination {...pagination} handleRefetch={handleRefetch} />
 
-      <TotalInfo>
-        You have {pagination.total} saved request{addPlural(pagination.total)}
-      </TotalInfo>
+      {loading ? (
+        <LoaderWrapper>
+          <Loader />
+        </LoaderWrapper>
+      ) : (
+        <TotalInfo>
+          You have {pagination.total} saved request{addPlural(pagination.total)}
+        </TotalInfo>
+      )}
 
       <SavedRequestsContainer>
         {savedRequests.map((item) => (

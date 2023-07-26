@@ -30,6 +30,7 @@ export const useProfile = () => {
   return {
     handleOpenModal,
     handleRefetch,
+    loading,
     pagination,
     savedRequests,
     savingTimesModal,

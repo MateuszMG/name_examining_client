@@ -7,6 +7,11 @@ export const PageWrapper = styled.div`
   margin: 64px 0;
 `;
 
+export const LoaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 export const TotalInfo = styled.h3`
   margin-left: 8px;
   text-align: left;
