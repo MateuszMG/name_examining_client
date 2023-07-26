@@ -1,5 +1,13 @@
 
 
+## [0.5.1](https://github.com/MateuszMG/name_examining_client/compare/0.5.0...0.5.1) (2023-07-26)
+
+
+### Bug Fixes
+
+* repair clear states  after unmount ([a834570](https://github.com/MateuszMG/name_examining_client/commit/a8345705e27bfa4c6b53a44ed630b1a9630b3bf9))
+* repair clearStates ([f2ef9bb](https://github.com/MateuszMG/name_examining_client/commit/f2ef9bb6393619ab597a47a21feb5429f4db4f27))
+
 ## [0.5.0](https://github.com/MateuszMG/name_examining_client/compare/0.4.0...0.5.0) (2023-07-26)
 
 
